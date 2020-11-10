@@ -121,6 +121,7 @@ namespace AutoSendMail
             this.SettingUserName.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SettingUserName.Location = new System.Drawing.Point(3, 200);
             this.SettingUserName.Name = "SettingUserName";
+            this.SettingUserName.PlaceholderText = "User Name";
             this.SettingUserName.Size = new System.Drawing.Size(329, 29);
             this.SettingUserName.TabIndex = 0;
             // 
@@ -130,6 +131,7 @@ namespace AutoSendMail
             this.SettingUserPassword.Location = new System.Drawing.Point(3, 255);
             this.SettingUserPassword.Name = "SettingUserPassword";
             this.SettingUserPassword.PasswordChar = '*';
+            this.SettingUserPassword.PlaceholderText = "Password";
             this.SettingUserPassword.Size = new System.Drawing.Size(329, 29);
             this.SettingUserPassword.TabIndex = 1;
             // 
@@ -138,6 +140,7 @@ namespace AutoSendMail
             this.SmptServer.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SmptServer.Location = new System.Drawing.Point(3, 144);
             this.SmptServer.Name = "SmptServer";
+            this.SmptServer.PlaceholderText = "SMTP Server Adress";
             this.SmptServer.Size = new System.Drawing.Size(157, 29);
             this.SmptServer.TabIndex = 2;
             // 
@@ -146,6 +149,7 @@ namespace AutoSendMail
             this.SendMessage1Subject.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SendMessage1Subject.Location = new System.Drawing.Point(3, 144);
             this.SendMessage1Subject.Name = "SendMessage1Subject";
+            this.SendMessage1Subject.PlaceholderText = "Subject";
             this.SendMessage1Subject.Size = new System.Drawing.Size(329, 29);
             this.SendMessage1Subject.TabIndex = 3;
             // 
@@ -216,6 +220,7 @@ namespace AutoSendMail
             this.SendMessage1To.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SendMessage1To.Location = new System.Drawing.Point(3, 32);
             this.SendMessage1To.Name = "SendMessage1To";
+            this.SendMessage1To.PlaceholderText = "To Name <Adress>";
             this.SendMessage1To.Size = new System.Drawing.Size(329, 29);
             this.SendMessage1To.TabIndex = 10;
             // 
@@ -244,6 +249,7 @@ namespace AutoSendMail
             this.SendMessage1CC.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SendMessage1CC.Location = new System.Drawing.Point(3, 88);
             this.SendMessage1CC.Name = "SendMessage1CC";
+            this.SendMessage1CC.PlaceholderText = "CC Name <Adress>";
             this.SendMessage1CC.Size = new System.Drawing.Size(329, 29);
             this.SendMessage1CC.TabIndex = 13;
             // 
@@ -253,6 +259,7 @@ namespace AutoSendMail
             this.SendMessage1Text.Location = new System.Drawing.Point(3, 200);
             this.SendMessage1Text.Multiline = true;
             this.SendMessage1Text.Name = "SendMessage1Text";
+            this.SendMessage1Text.PlaceholderText = "Body Text";
             this.SendMessage1Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.SendMessage1Text.Size = new System.Drawing.Size(329, 132);
             this.SendMessage1Text.TabIndex = 14;
@@ -311,6 +318,7 @@ namespace AutoSendMail
             this.SendEmail.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SendEmail.Location = new System.Drawing.Point(3, 88);
             this.SendEmail.Name = "SendEmail";
+            this.SendEmail.PlaceholderText = "Mail Adress";
             this.SendEmail.Size = new System.Drawing.Size(329, 29);
             this.SendEmail.TabIndex = 14;
             // 
@@ -319,6 +327,7 @@ namespace AutoSendMail
             this.SendUserName.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SendUserName.Location = new System.Drawing.Point(3, 32);
             this.SendUserName.Name = "SendUserName";
+            this.SendUserName.PlaceholderText = "Display name";
             this.SendUserName.Size = new System.Drawing.Size(329, 29);
             this.SendUserName.TabIndex = 13;
             // 
@@ -581,6 +590,7 @@ namespace AutoSendMail
             this.SendMessage2Text.Location = new System.Drawing.Point(3, 200);
             this.SendMessage2Text.Multiline = true;
             this.SendMessage2Text.Name = "SendMessage2Text";
+            this.SendMessage2Text.PlaceholderText = "Body Text";
             this.SendMessage2Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.SendMessage2Text.Size = new System.Drawing.Size(329, 132);
             this.SendMessage2Text.TabIndex = 7;
@@ -589,6 +599,7 @@ namespace AutoSendMail
             // 
             this.SendMessage2Subject.Location = new System.Drawing.Point(3, 144);
             this.SendMessage2Subject.Name = "SendMessage2Subject";
+            this.SendMessage2Subject.PlaceholderText = "Subject";
             this.SendMessage2Subject.Size = new System.Drawing.Size(329, 29);
             this.SendMessage2Subject.TabIndex = 6;
             // 
@@ -596,6 +607,7 @@ namespace AutoSendMail
             // 
             this.SendMessage2CC.Location = new System.Drawing.Point(3, 88);
             this.SendMessage2CC.Name = "SendMessage2CC";
+            this.SendMessage2CC.PlaceholderText = "CC Name <Adress>";
             this.SendMessage2CC.Size = new System.Drawing.Size(329, 29);
             this.SendMessage2CC.TabIndex = 5;
             // 
@@ -603,6 +615,7 @@ namespace AutoSendMail
             // 
             this.SendMessage2To.Location = new System.Drawing.Point(3, 32);
             this.SendMessage2To.Name = "SendMessage2To";
+            this.SendMessage2To.PlaceholderText = "To Name <Adress>";
             this.SendMessage2To.Size = new System.Drawing.Size(329, 29);
             this.SendMessage2To.TabIndex = 4;
             // 
