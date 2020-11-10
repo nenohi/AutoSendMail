@@ -102,19 +102,27 @@ namespace AutoSendMail
         private void SendDataAdd_Click(object sender, EventArgs e)
         {
             if (DateTime.Now.AddDays(-1) > SendData.Value) return;
-            foreach (var item in SendDataListBox.Items)
+            foreach (object item in SendDataListBox.Items)
             {
                 if (item.ToString() == SendData.Value.ToString(DateFormat))
                 {
+                    SendDataListBox.SelectedItem = item;
                     return;
                 }
             }
             SendDataListBox.Items.Add(SendData.Value.ToString(DateFormat));
             for(int i = 0; i < SendDataListBox.Items.Count; i++)
             {
-                for(int n = 0; n < SendDataListBox.Items.Count; n++)
+                DateTime date1 = DateTime.ParseExact(SendDataListBox.Items[i].ToString(), DateFormat, null);
+                for(int n = i+1; n < SendDataListBox.Items.Count; n++)
                 {
-
+                    DateTime date2 = DateTime.ParseExact(SendDataListBox.Items[n].ToString(), DateFormat, null);
+                    if (date1 > date2)
+                    {
+                        object tmp = SendDataListBox.Items[i];
+                        SendDataListBox.Items[i] = SendDataListBox.Items[n];
+                        SendDataListBox.Items[n] = tmp;
+                    }
                 }
             }
         }
@@ -189,10 +197,7 @@ namespace AutoSendMail
             {
                 SettingUserPassword.Text = Properties.Settings.Default.UserPass;
             }
-            if (Properties.Settings.Default.IsSSL != null)
-            {
-                SSLConnection.Checked = Properties.Settings.Default.IsSSL;
-            }
+            SSLConnection.Checked = Properties.Settings.Default.IsSSL;
             if (Properties.Settings.Default.Send1CC != null)
             {
                 SendMessage1CC.Text = Properties.Settings.Default.Send1CC;
