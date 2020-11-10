@@ -1,4 +1,4 @@
-﻿namespace AutoSendMail
+namespace AutoSendMail
 {
     partial class AutoSendMail
     {
@@ -995,7 +995,6 @@
         private System.Windows.Forms.Button SendMessage1Test;
         private System.Windows.Forms.Button SendMessage2Test;
         private System.Windows.Forms.Button StopSendMail;
-        private System.Windows.Forms.ListBox DataListBox;
         private System.Windows.Forms.ListBox SendDataListBox;
         private System.Windows.Forms.TextBox SendEmail;
         private System.Windows.Forms.TextBox SendUserName;

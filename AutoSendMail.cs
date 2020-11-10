@@ -189,10 +189,7 @@ namespace AutoSendMail
             {
                 SettingUserPassword.Text = Properties.Settings.Default.UserPass;
             }
-            if (Properties.Settings.Default.IsSSL != null)
-            {
-                SSLConnection.Checked = Properties.Settings.Default.IsSSL;
-            }
+            SSLConnection.Checked = Properties.Settings.Default.IsSSL;
             if (Properties.Settings.Default.Send1CC != null)
             {
                 SendMessage1CC.Text = Properties.Settings.Default.Send1CC;
