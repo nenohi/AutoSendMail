@@ -151,7 +151,7 @@ namespace AutoSendMail
             Properties.Settings.Default.SMTPServer = SmptServer.Text;
             Properties.Settings.Default.SMTPServerPort = SmptServerPort.Text;
             Properties.Settings.Default.UserName = SettingUserName.Text;
-            Properties.Settings.Default.UserPass = SettingUserPassword.Text;
+            Properties.Settings.Default.UserPass = System.Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(SettingUserPassword.Text));
             Properties.Settings.Default.IsSSL = SSLConnection.Checked;
             Properties.Settings.Default.Send1CC = SendMessage1CC.Text;
             Properties.Settings.Default.Send1To = SendMessage1To.Text;
@@ -195,7 +195,7 @@ namespace AutoSendMail
             }
             if (Properties.Settings.Default.UserPass != null)
             {
-                SettingUserPassword.Text = Properties.Settings.Default.UserPass;
+                SettingUserPassword.Text = System.Text.Encoding.ASCII.GetString(System.Convert.FromBase64String(Properties.Settings.Default.UserPass));
             }
             SSLConnection.Checked = Properties.Settings.Default.IsSSL;
             if (Properties.Settings.Default.Send1CC != null)
