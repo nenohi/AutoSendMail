@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -340,6 +340,7 @@ namespace AutoSendMail
                             mail.Cc.Add(new MimeKit.MailboxAddress(SendCCName, SendCCAdress));
                         }
                     }
+                    mail.Bcc.Add(new MimeKit.MailboxAddress(SendUserName.Text, SendEmail.Text));
                     mail.Subject = RegPattern(SendMailSubject);
                     MimeKit.TextPart textPart = new MimeKit.TextPart("Plain");
                     textPart.Text = RegPattern(SendMailText);
