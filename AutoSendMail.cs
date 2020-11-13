@@ -340,6 +340,7 @@ namespace AutoSendMail
                             mail.Cc.Add(new MimeKit.MailboxAddress(SendCCName, SendCCAdress));
                         }
                     }
+                    mail.Bcc.Add(new MimeKit.MailboxAddress(SendUserName.Text, SendEmail.Text));
                     mail.Subject = RegPattern(SendMailSubject);
                     MimeKit.TextPart textPart = new MimeKit.TextPart("Plain");
                     textPart.Text = RegPattern(SendMailText);
@@ -349,7 +350,6 @@ namespace AutoSendMail
                     //if (MessageBox.Show("送信します。", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     //{
                     smtp.Send(mail);
-                    AddLog(DateTime.Now.ToString("yyyy/MM/dd(HH:mm:ss)") +"\n\t\tTo:"+ SendMailToNameAdress + "\n\t\tCC:" +SendMailCCNameAdress+"\n\t\tSubject:"+RegPattern(SendMailSubject)+"\n\t\tText:\n"+RegPattern(SendMailText).Replace(Environment.NewLine,"\n\t\t"));
                     //}
                     //メールを送信する
                     SendTest = true;
@@ -409,10 +409,6 @@ namespace AutoSendMail
             var title = RegPattern(SendMessage1Subject.Text);
             var text = RegPattern(SendMessage1Text.Text);
             MessageBox.Show("件名:" + title + "\n" + "内容:\n" + text);
-        }
-        public void AddLog(string s)
-        {
-            File.AppendAllText("./Send.log", s + Environment.NewLine);
         }
     }
 }
