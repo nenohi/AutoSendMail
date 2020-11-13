@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -349,7 +349,6 @@ namespace AutoSendMail
                     //if (MessageBox.Show("送信します。", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     //{
                     smtp.Send(mail);
-                    AddLog(DateTime.Now.ToString("yyyy/MM/dd(HH:mm:ss)") +"\n\t\tTo:"+ SendMailToNameAdress + "\n\t\tCC:" +SendMailCCNameAdress+"\n\t\tSubject:"+RegPattern(SendMailSubject)+"\n\t\tText:\n"+RegPattern(SendMailText).Replace(Environment.NewLine,"\n\t\t"));
                     //}
                     //メールを送信する
                     SendTest = true;
@@ -409,10 +408,6 @@ namespace AutoSendMail
             var title = RegPattern(SendMessage1Subject.Text);
             var text = RegPattern(SendMessage1Text.Text);
             MessageBox.Show("件名:" + title + "\n" + "内容:\n" + text);
-        }
-        public void AddLog(string s)
-        {
-            File.AppendAllText("./Send.log", s + Environment.NewLine);
         }
     }
 }
