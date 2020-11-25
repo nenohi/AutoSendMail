@@ -925,7 +925,7 @@ namespace AutoSendMail
             // 
             // macro
             // 
-            this.macro.Interval = 60000;
+            this.macro.Interval = 180000;
             this.macro.Tick += new System.EventHandler(this.macro_Tick);
             // 
             // AutoSendMail
