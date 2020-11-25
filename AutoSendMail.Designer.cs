@@ -47,6 +47,7 @@ namespace AutoSendMail
             this.SendMessage1Text = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TabServerSetting = new System.Windows.Forms.TabPage();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.SettingSave = new System.Windows.Forms.Button();
             this.SendEmail = new System.Windows.Forms.TextBox();
             this.SendUserName = new System.Windows.Forms.TextBox();
@@ -107,6 +108,7 @@ namespace AutoSendMail
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.SendMailTimer = new System.Windows.Forms.Timer(this.components);
+            this.macro = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.TabServerSetting.SuspendLayout();
             this.TabTimeSetting.SuspendLayout();
@@ -279,6 +281,7 @@ namespace AutoSendMail
             // 
             // TabServerSetting
             // 
+            this.TabServerSetting.Controls.Add(this.checkBox2);
             this.TabServerSetting.Controls.Add(this.SettingSave);
             this.TabServerSetting.Controls.Add(this.SendEmail);
             this.TabServerSetting.Controls.Add(this.SendUserName);
@@ -301,6 +304,17 @@ namespace AutoSendMail
             this.TabServerSetting.TabIndex = 1;
             this.TabServerSetting.Text = "サーバー設定";
             this.TabServerSetting.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(3, 341);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(162, 19);
+            this.checkBox2.TabIndex = 16;
+            this.checkBox2.Text = "無動作時にマクロを使用する";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // SettingSave
             // 
@@ -909,6 +923,11 @@ namespace AutoSendMail
             this.SendMailTimer.Interval = 60000;
             this.SendMailTimer.Tick += new System.EventHandler(this.SendMailTimer_Tick);
             // 
+            // macro
+            // 
+            this.macro.Interval = 60000;
+            this.macro.Tick += new System.EventHandler(this.macro_Tick);
+            // 
             // AutoSendMail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -919,6 +938,7 @@ namespace AutoSendMail
             this.Name = "AutoSendMail";
             this.Text = "メール自動送信システム";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.SizeChanged += new System.EventHandler(this.AutoSendMail_SizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.TabServerSetting.ResumeLayout(false);
             this.TabServerSetting.PerformLayout();
@@ -1015,6 +1035,8 @@ namespace AutoSendMail
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button SettingSave;
         private System.Windows.Forms.Timer SendMailTimer;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Timer macro;
     }
 }
 
