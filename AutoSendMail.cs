@@ -7,31 +7,37 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace AutoSendMail
 {
     public partial class AutoSendMail : Form
     {
+        [DllImport("USER32.dll", CallingConvention = CallingConvention.StdCall)]
+        static extern void SetCursorPos(int X, int Y);
+
+        [DllImport("USER32.dll", CallingConvention = CallingConvention.StdCall)]
+        static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+        private const int MOUSEEVENTF_LEFTDOWN = 0x2;
+        private const int MOUSEEVENTF_LEFTUP = 0x4;
+
+
+
         public string DateFormat = "yyyy年MM月dd日（dddd）";
         public bool SendTest = true;
+        public Point MousePoint;
+        Keys Keys;
         public AutoSendMail()
         {
             InitializeComponent();
             LoadProperties();
-            if (!File.Exists("./Send.log"))
-            {
-                File.Create("./Send.log");
-            }
-        }
-
-        public void ItemSort()
-        {
-            
+            Application.Idle += new EventHandler(Application_Idle);
         }
 
         private void SendMailTest_Click(object sender, EventArgs e)
@@ -169,6 +175,7 @@ namespace AutoSendMail
             Properties.Settings.Default.DataList = list;
             Properties.Settings.Default.SendMessageTime1 = Send1Time.Value;
             Properties.Settings.Default.SendMessageTime2 = Send2Time.Value;
+            Properties.Settings.Default.Macro = checkBox2.Checked;
             Properties.Settings.Default.Save();
         }
         public void LoadProperties()
@@ -244,6 +251,10 @@ namespace AutoSendMail
             if (Properties.Settings.Default.SendMessageTime2 != null)
             {
                 Send2Time.Value = Properties.Settings.Default.SendMessageTime2;
+            }
+            if(Properties.Settings.Default.Macro == true)
+            {
+                checkBox2.Checked = true;
             }
         }
 
@@ -347,11 +358,7 @@ namespace AutoSendMail
                     var multipart = new MimeKit.Multipart("mixed");
                     multipart.Add(textPart);
                     mail.Body = multipart;
-                    //if (MessageBox.Show("送信します。", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    //{
                     smtp.Send(mail);
-                    //}
-                    //メールを送信する
                     SendTest = true;
                 }
                 catch (Exception exception)
@@ -394,6 +401,7 @@ namespace AutoSendMail
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Application.Idle -= Application_Idle;
             Save();
         }
 
@@ -409,6 +417,69 @@ namespace AutoSendMail
             var title = RegPattern(SendMessage1Subject.Text);
             var text = RegPattern(SendMessage1Text.Text);
             MessageBox.Show("件名:" + title + "\n" + "内容:\n" + text);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        Random Random = new Random();
+        private void macro_Tick(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                if(MousePoint == System.Windows.Forms.Cursor.Position)
+                {
+                    RestoreMinimizedWindow();
+                    tabControl1.SelectedTab = TabHelp;
+                    MousePoint = new Point(Random.Next(21, 320), Random.Next(72, 420));
+                    Point mp = this.PointToScreen(MousePoint);
+                    System.Windows.Forms.Cursor.Position = mp;
+                    mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+                    mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+                }
+                else
+                {
+                    macro.Stop();
+                }
+            }
+        }
+        private void Application_Idle(object sender,EventArgs e)
+        {
+            DateTime dateTime = DateTime.Now;
+            if (checkBox2.Checked && 
+                MousePoint != System.Windows.Forms.Cursor.Position && 
+                dateTime.TimeOfDay>Send1Time.Value.TimeOfDay &&  
+                dateTime.TimeOfDay < Send2Time.Value.TimeOfDay)
+            {
+                if (!macro.Enabled)
+                {
+                    macro.Start();
+                }
+                else
+                {
+                    macro.Stop();
+                }
+            }
+        }
+
+        private FormWindowState preWindowState;
+
+        public void RestoreMinimizedWindow()
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = this.preWindowState;
+            }
+        }
+
+        private void AutoSendMail_SizeChanged(object sender, EventArgs e)
+        {
+            //最小化された以外の時に、状態を覚えておく
+            if (this.WindowState != FormWindowState.Minimized)
+            {
+                this.preWindowState = this.WindowState;
+            }
         }
     }
 }

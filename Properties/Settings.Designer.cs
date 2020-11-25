@@ -12,7 +12,7 @@ namespace AutoSendMail.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -84,7 +84,7 @@ namespace AutoSendMail.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("11/09/2020 11:04:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("11/09/2020 08:20:00")]
         public global::System.DateTime SendMessageTime1 {
             get {
                 return ((global::System.DateTime)(this["SendMessageTime1"]));
@@ -96,7 +96,7 @@ namespace AutoSendMail.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("11/09/2020 11:04:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("11/09/2020 17:20:00")]
         public global::System.DateTime SendMessageTime2 {
             get {
                 return ((global::System.DateTime)(this["SendMessageTime2"]));
@@ -235,6 +235,18 @@ namespace AutoSendMail.Properties {
             }
             set {
                 this["Send2Text"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Macro {
+            get {
+                return ((bool)(this["Macro"]));
+            }
+            set {
+                this["Macro"] = value;
             }
         }
     }
