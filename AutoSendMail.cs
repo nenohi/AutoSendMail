@@ -401,7 +401,7 @@ namespace AutoSendMail
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Idle -= Application_Idle;
+            Application.Idle -= new EventHandler(Application_Idle);
             Save();
         }
 
@@ -440,6 +440,7 @@ namespace AutoSendMail
                 }
                 else
                 {
+                    MousePoint = System.Windows.Forms.Cursor.Position;
                     macro.Stop();
                 }
             }
@@ -448,7 +449,7 @@ namespace AutoSendMail
         {
             DateTime dateTime = DateTime.Now;
             if (checkBox2.Checked && 
-                MousePoint != System.Windows.Forms.Cursor.Position && 
+                MousePoint == System.Windows.Forms.Cursor.Position && 
                 dateTime.TimeOfDay>Send1Time.Value.TimeOfDay &&  
                 dateTime.TimeOfDay < Send2Time.Value.TimeOfDay)
             {
@@ -456,11 +457,8 @@ namespace AutoSendMail
                 {
                     macro.Start();
                 }
-                else
-                {
-                    macro.Stop();
-                }
             }
+            MousePoint = System.Windows.Forms.Cursor.Position;
         }
 
         private FormWindowState preWindowState;
