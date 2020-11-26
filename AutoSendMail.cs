@@ -431,6 +431,7 @@ namespace AutoSendMail
                 if(MousePoint == System.Windows.Forms.Cursor.Position)
                 {
                     RestoreMinimizedWindow();
+                    this.Activate();
                     tabControl1.SelectedTab = TabHelp;
                     MousePoint = new Point(Random.Next(21, 320), Random.Next(72, 420));
                     Point mp = this.PointToScreen(MousePoint);
