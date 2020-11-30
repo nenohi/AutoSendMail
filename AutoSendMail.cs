@@ -448,15 +448,23 @@ namespace AutoSendMail
         }
         private void Application_Idle(object sender,EventArgs e)
         {
+            var dateTimes = new List<DateTime>();
             DateTime dateTime = DateTime.Now;
             if (checkBox2.Checked && 
                 MousePoint == System.Windows.Forms.Cursor.Position && 
-                dateTime.TimeOfDay>Send1Time.Value.TimeOfDay &&  
+                dateTime.TimeOfDay > Send1Time.Value.TimeOfDay &&  
                 dateTime.TimeOfDay < Send2Time.Value.TimeOfDay)
             {
-                if (!macro.Enabled)
+                foreach (var item in SendDataListBox.Items)
                 {
-                    macro.Start();
+                    dateTimes.Add(DateTime.ParseExact(item.ToString(), DateFormat, null));
+                    if (DateTime.ParseExact(item.ToString(), DateFormat, null).Date == DateTime.Now.Date)
+                    {
+                        if (!macro.Enabled)
+                        {
+                            macro.Start();
+                        }
+                    }
                 }
             }
             MousePoint = System.Windows.Forms.Cursor.Position;
