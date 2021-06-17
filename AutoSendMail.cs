@@ -176,7 +176,7 @@ namespace AutoSendMail
             Properties.Settings.Default.SendMessageTime1 = Send1Time.Value;
             Properties.Settings.Default.SendMessageTime2 = Send2Time.Value;
             Properties.Settings.Default.Macro = checkBox2.Checked;
-            Properties.Settings.Default.IsSendStart = StartSendMail.Enabled;
+            Properties.Settings.Default.IsSendStart = SendMailTimer.Enabled;
             Properties.Settings.Default.Save();
         }
         public void LoadProperties()
@@ -262,6 +262,8 @@ namespace AutoSendMail
                 SendTest = true;
                 StopSendMail.Enabled = true;
                 StartSendMail.Enabled = false;
+                SendMailTimer.Stop();
+                SendMailTimer.Start();
             }
         }
 
