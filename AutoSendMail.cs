@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -176,6 +176,7 @@ namespace AutoSendMail
             Properties.Settings.Default.SendMessageTime1 = Send1Time.Value;
             Properties.Settings.Default.SendMessageTime2 = Send2Time.Value;
             Properties.Settings.Default.Macro = checkBox2.Checked;
+            Properties.Settings.Default.IsSendStart = StartSendMail.Enabled;
             Properties.Settings.Default.Save();
         }
         public void LoadProperties()
@@ -255,6 +256,12 @@ namespace AutoSendMail
             if(Properties.Settings.Default.Macro == true)
             {
                 checkBox2.Checked = true;
+            }
+            if (Properties.Settings.Default.IsSendStart)
+            {
+                SendTest = true;
+                StopSendMail.Enabled = true;
+                StartSendMail.Enabled = false;
             }
         }
 

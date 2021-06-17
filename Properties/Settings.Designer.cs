@@ -249,5 +249,29 @@ namespace AutoSendMail.Properties {
                 this["Macro"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsSendStart {
+            get {
+                return ((bool)(this["IsSendStart"]));
+            }
+            set {
+                this["IsSendStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MessageChecked {
+            get {
+                return ((bool)(this["MessageChecked"]));
+            }
+            set {
+                this["MessageChecked"] = value;
+            }
+        }
     }
 }
